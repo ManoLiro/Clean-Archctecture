@@ -1,13 +1,22 @@
+using Microsoft.Identity.Client;
+using CleanArchMvc.Infra.IoC;
+using Microsoft.Extensions.Configuration;
+
 namespace CleanArchMvc.WebUI
 {
     public class Program
     {
+
+
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            
 
+            var builder = WebApplication.CreateBuilder(args);
+            
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddInfrastructure(builder.Configuration);
 
             var app = builder.Build();
 
@@ -28,7 +37,7 @@ namespace CleanArchMvc.WebUI
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Categories}/{action=Index}/{id?}");
 
             app.Run();
         }

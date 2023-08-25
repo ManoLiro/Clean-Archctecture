@@ -1,6 +1,8 @@
-﻿@model IEnumerable<CleanArchMvc.Application.DTOs.ProductDTO>
+﻿@using System.Globalization;
+@model IEnumerable<CleanArchMvc.Application.DTOs.ProductDTO>
 @{
     ViewData["Title"] = "Products Management";
+    CultureInfo ptBr = new CultureInfo("pt-BR");
 }
 <style>
     .modal-lg {
@@ -44,7 +46,7 @@
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
                     <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>R$@item.Price.ToString(ptBr)</td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
                         <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>

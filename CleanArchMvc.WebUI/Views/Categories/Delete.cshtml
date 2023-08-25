@@ -1,0 +1,26 @@
+﻿@model CleanArchMvc.Application.DTOs.CategoryDTO
+@{
+    ViewData["Title"] = "Deletar Categoria";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <h4>Certeza que deseja Deletar a categoria:</h4>
+                <label asp-for="Name" class="col-md-2 control-label"></label>
+                <input readonly="true" asp-for="Name" value="@Model.Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Delete" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-info">Back to List</a>
+            </div>
+        </div>
+
+    </div>
+</form>
